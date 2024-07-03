@@ -1,0 +1,42 @@
+[{
+    "timestamp": {
+      "$date": {
+        "$numberLong": "1662896469284"
+      }
+    },
+    "_id": {
+      "$oid": "631dad359fbc895818809423"
+    },
+    "instances": {
+      "1": {
+        "pos_x": 15.70,
+        "pos_y": 8.75,
+        "vel_x": 0,
+        "vel_y": 0,
+        "confidence": 0,
+        "sensors": []
+      }
+    }
+  },
+  {
+    "timestamp": {
+      "$date": {
+        "$numberLong": "1662896469546"
+      }
+    },
+    "_id": {
+      "$oid": "631dad359fbc895818809424"
+    },
+    "instances": {
+      "1": {
+        "pos_x": 15.32,
+        "pos_y": 8.75,
+        "vel_x": 0,
+        "vel_y": 0,
+        "confidence": 0,
+        "sensors": []
+      }
+    }
+  }
+
+]

@@ -1,0 +1,50 @@
+plugins {
+    id 'java' // Apply the java plugin if you plan to build Java applications
+}
+
+group = 'Flexion-test'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+////////// Custom tasks to print in the terminal
+task sayHelloWord(type: Exec) {
+    commandLine 'echo', 'Hello, World!'
+}
+//// End of task
+
+//////// Custom task for building the front end
+
+task cdToUIFolderAndBuildProject(type: Exec) {
+    workingDir 'test-ui'
+    environment 'PATH', System.getenv('PATH')
+    commandLine '/usr/local/bin/npm', 'install'
+}
+
+task removeNodeModules(type: Exec) {
+    workingDir 'test-ui'
+    environment 'PATH', System.getenv('PATH')
+    commandLine 'rm', '-Rf',  'node_modules'
+}
+
+
+task buildFrontEnd(type: DefaultTask) {
+    dependsOn cdToUIFolderAndBuildProject
+    doLast {
+        println("== end building front-end ==")
+    }
+}
+/////////
+
+build.dependsOn sayHelloWord, buildFrontEnd, removeNodeModules
